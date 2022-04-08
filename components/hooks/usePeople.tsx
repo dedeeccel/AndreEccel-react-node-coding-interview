@@ -11,8 +11,7 @@ export const usePeople = () => {
 
   // The following hook (useCallback) may not be neccesary
   // just showing a possible use case
-  const execute = useCallback(
-    async (size = 20) => {
+  const execute = async (size = 20) => {
       setLoading(true);
       try {
         const { data, totalItems } = await APIClient.getPeopleInfo({
@@ -28,9 +27,7 @@ export const usePeople = () => {
       } finally {
         setLoading(false);
       }
-    },
-    [peopleData.initialize]
-  );
+    }
 
   return { ...peopleData, execute, error, loading };
 };
